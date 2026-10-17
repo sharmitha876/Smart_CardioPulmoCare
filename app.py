@@ -76,7 +76,6 @@ HEART_MODEL_PATH = os.path.join(
 )
 HEART_THRESHOLD_PATH = os.path.join(
     BASE_DIR,
-    "models",
     "heart_4valve_ast_conformer_threshold.txt"
 )
 
