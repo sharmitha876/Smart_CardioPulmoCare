@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Heart Murmur Analysis | CardioPulmoCare</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="header" id="home">
+  <a class="logo" href="index.html" aria-label="CardioPulmoCare home"><span class="logo-mark" aria-hidden="true">♡</span><span class="logo-copy"><strong>Cardio<span>Pulmo</span>Care</strong><small>AI for a Healthier Heart</small></span></a>
+  <nav class="main-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="index.html#about">About</a><a class="active" href="#murmur-page">Murmur</a><a href="index.html#contact">Contact</a></nav>
+  <div class="header-actions"><div class="status"><span id="serverDot" class="status-dot"></span><span id="serverStatus">Checking server...</span></div><a class="get-started" href="index.html#prediction">All Modules <span aria-hidden="true">→</span></a></div>
+</header>
+<main class="container" id="murmur-page">
+  <section class="murmur-page-hero"><a class="back-link" href="index.html#prediction">← Back to Prediction Modules</a><div class="hero-badge"><span class="pulse-mini">♡</span> FOUR-VALVE HEART SOUND ANALYSIS</div><h1>Heart <span>Murmur</span> Analysis</h1><p>Upload all four valve-specific WAV recordings from the same patient to run the Murmur AST + Conformer model.</p><div class="valve-flow"><span>AV</span><i>+</i><span>MV</span><i>+</i><span>PV</span><i>+</i><span>TV</span><i>→</i><strong>Prediction</strong></div></section>
+    <section class="card heart-card" id="prediction">
+
+
+        <div class="section-title">
+
+            <div class="icon heart-icon">
+                ♥
+            </div>
+
+            <div>
+
+                <h2>
+                    Heart Murmur Analysis
+                </h2>
+
+                <p>
+                    Four-valve heart sound analysis using AV, MV, PV and TV recordings
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FOUR VALVE UPLOADS
+        ================================================== -->
+
+        <div class="heart-valves">
+
+
+            <!-- ================= AV ================= -->
+
+            <div class="upload-box heart-upload">
+
+                <div class="upload-symbol">
+                    ♥
+                </div>
+
+                <h3>
+                    Aortic Valve (AV)
+                </h3>
+
+                <input
+                    type="file"
+                    id="avAudioFile"
+                    accept=".wav,audio/wav"
+                    hidden
+                >
+
+                <label
+                    for="avAudioFile"
+                    class="choose-button">
+
+                    Choose AV WAV
+
+                </label>
+
+                <div
+                    id="avFileName"
+                    class="file-name">
+
+                    No file selected
+
+                </div>
+
+                <div class="upload-help">
+                    Aortic valve heart sound
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= MV ================= -->
+
+            <div class="upload-box heart-upload">
+
+                <div class="upload-symbol">
+                    ♥
+                </div>
+
+                <h3>
+                    Mitral Valve (MV)
+                </h3>
+
+                <input
+                    type="file"
+                    id="mvAudioFile"
+                    accept=".wav,audio/wav"
+                    hidden
+                >
+
+                <label
+                    for="mvAudioFile"
+                    class="choose-button">
+
+                    Choose MV WAV
+
+                </label>
+
+                <div
+                    id="mvFileName"
+                    class="file-name">
+
+                    No file selected
+
+                </div>
+
+                <div class="upload-help">
+                    Mitral valve heart sound
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= PV ================= -->
+
+            <div class="upload-box heart-upload">
+
+                <div class="upload-symbol">
+                    ♥
+                </div>
+
+                <h3>
+                    Pulmonary Valve (PV)
+                </h3>
+
+                <input
+                    type="file"
+                    id="pvAudioFile"
+                    accept=".wav,audio/wav"
+                    hidden
+                >
+
+                <label
+                    for="pvAudioFile"
+                    class="choose-button">
+
+                    Choose PV WAV
+
+                </label>
+
+                <div
+                    id="pvFileName"
+                    class="file-name">
+
+                    No file selected
+
+                </div>
+
+                <div class="upload-help">
+                    Pulmonary valve heart sound
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= TV ================= -->
+
+            <div class="upload-box heart-upload">
+
+                <div class="upload-symbol">
+                    ♥
+                </div>
+
+                <h3>
+                    Tricuspid Valve (TV)
+                </h3>
+
+                <input
+                    type="file"
+                    id="tvAudioFile"
+                    accept=".wav,audio/wav"
+                    hidden
+                >
+
+                <label
+                    for="tvAudioFile"
+                    class="choose-button">
+
+                    Choose TV WAV
+
+                </label>
+
+                <div
+                    id="tvFileName"
+                    class="file-name">
+
+                    No file selected
+
+                </div>
+
+                <div class="upload-help">
+                    Tricuspid valve heart sound
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- HEART FILE STATUS -->
+
+        <div
+            id="heartFileStatus"
+            class="file-name">
+
+            Please select all 4 valve WAV files
+
+        </div>
+
+
+
+        <!-- HEART BUTTON -->
+
+        <button
+            id="analyzeHeartButton"
+            class="analyze-button heart-button"
+            disabled>
+
+            Analyze Murmur
+
+        </button>
+
+
+
+        <!-- HEART LOADING -->
+
+        <div
+            id="heartLoading"
+            class="loading hidden">
+
+            <div class="spinner"></div>
+
+            <span>
+                Analyzing AV + MV + PV + TV...
+            </span>
+
+        </div>
+
+
+
+        <!-- HEART RESULT -->
+
+        <div
+            id="heartResult"
+            class="result hidden">
+
+            <div
+                id="heartResultTitle"
+                class="result-title">
+            </div>
+
+            <div
+                id="heartProbabilities">
+            </div>
+
+        </div>
+
+
+
+        <!-- HEART ERROR -->
+
+        <div
+            id="heartError"
+            class="error hidden">
+        </div>
+
+
+    </section>
+  <section class="disclaimer"><span>AI Screening Support</span><p>This application provides AI-based audio screening results and is not a substitute for professional medical diagnosis.</p></section>
+</main><footer id="contact"><div class="footer-brand">CardioPulmoCare</div><p>AI-Based Cardiac Sound Analysis</p><span>AST + Conformer Deep Learning System</span></footer><script src="script.js"></script></body></html>

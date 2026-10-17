@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Mitral Regurgitation Analysis | CardioPulmoCare</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="header" id="home">
+  <a class="logo" href="index.html" aria-label="CardioPulmoCare home"><span class="logo-mark" aria-hidden="true">♡</span><span class="logo-copy"><strong>Cardio<span>Pulmo</span>Care</strong><small>AI for a Healthier Heart</small></span></a>
+  <nav class="main-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="index.html#about">About</a><a class="active" href="mr.html">MR</a><a href="index.html#contact">Contact</a></nav>
+  <div class="header-actions"><div class="status"><span id="serverDot" class="status-dot"></span><span id="serverStatus">Checking server...</span></div><a class="get-started" href="index.html#prediction">All Modules <span aria-hidden="true">→</span></a></div>
+</header>
+<main class="container" id="mr-page">
+  <section class="murmur-page-hero"><a class="back-link" href="index.html#prediction">← Back to Prediction Modules</a><div class="hero-badge"><span class="pulse-mini">♡</span> SINGLE-AUDIO CARDIAC ANALYSIS</div><h1>Mitral Regurgitation <span>Analysis</span></h1><p>Upload one heart sound recording for MR screening. The Mel-spectrogram is analysed using the AST + Conformer model.</p><div class="valve-flow"><span>MR</span><i>→</i><strong>AST + Conformer Prediction</strong></div></section>
+  <section class="card heart-card" id="prediction">
+    <div class="section-title"><div class="icon">MR</div><div><h2>Mitral Regurgitation (MR)</h2><p>Upload one WAV recording to get the model prediction.</p></div></div>
+    <div class="upload-box disease-upload">
+      <div class="upload-symbol">♥</div><h3>Mitral Regurgitation Heart Sound</h3>
+      <input type="file" id="mrAudioFile" accept=".wav,audio/wav" hidden>
+      <label for="mrAudioFile" class="choose-button">Choose MR WAV</label>
+      <div id="mrFileName" class="file-name">No file selected</div>
+      <div class="upload-help">WAV format only</div>
+    </div>
+    <button id="analyzeMRButton" class="analyze-button" disabled>Analyze Mitral Regurgitation</button>
+    <div id="mrLoading" class="loading hidden"><div class="spinner"></div>Analysing heart sound using AST + Conformer...</div>
+    <div id="mrResult" class="result hidden"><div class="result-title" id="mrResultTitle">Prediction</div><p id="mrResultMessage"></p><p class="upload-help">AI screening support only; this is not a medical diagnosis.</p></div>
+    <div id="mrError" class="error hidden" role="alert"></div>
+  </section>
+  <div class="disclaimer"><span>Important note</span><p>This academic project provides preliminary audio classification only. It cannot replace assessment by a qualified healthcare professional.</p></div>
+</main>
+<footer id="contact"><div class="footer-brand">CardioPulmoCare</div><p>AI-Based Cardiac Sound Analysis</p><span>Mel-Spectrogram + AST + Conformer</span></footer>
+<script src="script.js"></script></body></html>
