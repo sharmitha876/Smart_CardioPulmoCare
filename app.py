@@ -82,25 +82,21 @@ HEART_THRESHOLD_PATH = os.path.join(
 
 AS_MODEL_PATH = os.path.join(
     BASE_DIR,
-    "models",
     "as_ast_conformer.pth"
 )
 
 AS_THRESHOLD_PATH = os.path.join(
     BASE_DIR,
-    "models",
     "as_ast_conformer_threshold.txt"
 )
 
 MR_MODEL_PATH = os.path.join(
     BASE_DIR,
-    "models",
     "mr_ast_conformer.pth"
 )
 
 MR_THRESHOLD_PATH = os.path.join(
     BASE_DIR,
-    "models",
     "mr_ast_conformer_threshold.txt"
 )
 
