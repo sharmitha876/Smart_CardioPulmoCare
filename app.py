@@ -72,10 +72,8 @@ os.makedirs(
 
 HEART_MODEL_PATH = os.path.join(
     BASE_DIR,
-    "models",
     "heart_4valve_ast_conformer.pth"
 )
-
 HEART_THRESHOLD_PATH = os.path.join(
     BASE_DIR,
     "models",
