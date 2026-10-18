@@ -1501,10 +1501,11 @@ def predict_as():
         spectrogram = heart_audio_to_mel(file_path)
         tensor = make_tensor(spectrogram)
 
-        with torch.no_grad():
+        with torch.inference_mode():
+            tensor = tensor.to(DEVICE)
             logit = as_model(tensor)
             as_probability = torch.sigmoid(logit).item()
-
+            
         prediction = (
             "Aortic Stenosis"
             if as_probability >= AS_THRESHOLD
