@@ -802,6 +802,10 @@ print("=" * 70)
 print()
 print("Loading 4-valve Heart AST + Conformer:")
 print(HEART_MODEL_PATH)
+print("DEBUG - BASE_DIR:", BASE_DIR)
+print("DEBUG - HEART_MODEL_PATH:", HEART_MODEL_PATH)
+print("DEBUG - FILE EXISTS:", os.path.exists(HEART_MODEL_PATH))
+print("DEBUG - ROOT FILES:", os.listdir(BASE_DIR))
 
 if not os.path.exists(
     HEART_MODEL_PATH
