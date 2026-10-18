@@ -21,14 +21,8 @@ if MODELS_DIR not in sys.path:
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-from werkzeug.utils import secure_filename
-
-from train_as_model import ASASTConformer
-from train_mr_model import MRASTConformer
-
+torch.set_num_threads(1)
+torch.set_num_interop_threads(1)
 
 # ============================================================
 # CARDIOPULMOCARE
