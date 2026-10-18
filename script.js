@@ -1,4 +1,4 @@
-const API_URL = "https://smart-cardiopulmacare-1.onrender.com";
+const API_URL = "https://smart-cardiopulmocare-1.onrender.com";
 
 
 
