@@ -1567,10 +1567,10 @@ def predict_mr():
         spectrogram = heart_audio_to_mel(file_path)
         tensor = make_tensor(spectrogram)
 
-       with torch.inference_mode():
-    tensor = tensor.to(DEVICE)
-    logit = as_model(tensor)
-    as_probability = torch.sigmoid(logit).item()
+        with torch.inference_mode():
+            tensor = tensor.to(DEVICE)
+            logit = mr_model(tensor)
+            mr_probability = torch.sigmoid(logit).item()
         prediction = (
             "Mitral Regurgitation"
             if mr_probability >= MR_THRESHOLD
