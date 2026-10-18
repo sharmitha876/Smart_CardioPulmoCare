@@ -6,8 +6,10 @@ import numpy as np
 import librosa
 
 # Allow backend/app.py to import model definitions from the models folder.
-BASE_DIR = "/app"
+BASE_DIR = os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))
 )
+
 MODELS_DIR = os.path.join(
     BASE_DIR,
     "models"
@@ -70,31 +72,38 @@ os.makedirs(
 
 HEART_MODEL_PATH = os.path.join(
     BASE_DIR,
+    "models",
     "heart_4valve_ast_conformer.pth"
 )
+
 HEART_THRESHOLD_PATH = os.path.join(
     BASE_DIR,
+    "models",
     "heart_4valve_ast_conformer_threshold.txt"
 )
 
 
 AS_MODEL_PATH = os.path.join(
     BASE_DIR,
+    "models",
     "as_ast_conformer.pth"
 )
 
 AS_THRESHOLD_PATH = os.path.join(
     BASE_DIR,
+    "models",
     "as_ast_conformer_threshold.txt"
 )
 
 MR_MODEL_PATH = os.path.join(
     BASE_DIR,
+    "models",
     "mr_ast_conformer.pth"
 )
 
 MR_THRESHOLD_PATH = os.path.join(
     BASE_DIR,
+    "models",
     "mr_ast_conformer_threshold.txt"
 )
 
@@ -800,10 +809,6 @@ print("=" * 70)
 print()
 print("Loading 4-valve Heart AST + Conformer:")
 print(HEART_MODEL_PATH)
-print("DEBUG - BASE_DIR:", BASE_DIR)
-print("DEBUG - HEART_MODEL_PATH:", HEART_MODEL_PATH)
-print("DEBUG - FILE EXISTS:", os.path.exists(HEART_MODEL_PATH))
-print("DEBUG - ROOT FILES:", os.listdir(BASE_DIR))
 
 if not os.path.exists(
     HEART_MODEL_PATH
