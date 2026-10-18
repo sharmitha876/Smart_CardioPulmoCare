@@ -70,6 +70,9 @@ os.makedirs(
 # MODEL PATHS
 # ============================================================
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODELS_DIR = os.path.join(BASE_DIR, "models")
+
 HEART_MODEL_PATH = os.path.join(
     MODELS_DIR,
     "heart_4valve_ast_conformer.pth"
@@ -99,7 +102,6 @@ MR_THRESHOLD_PATH = os.path.join(
     MODELS_DIR,
     "mr_ast_conformer_threshold.txt"
 )
-
 # ============================================================
 # THRESHOLD LOADER
 # ============================================================
