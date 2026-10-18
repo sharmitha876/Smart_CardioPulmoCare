@@ -790,7 +790,15 @@ class HeartFourValveASTConformer(nn.Module):
             valve_logits,
             attention_weights.squeeze(-1)
         )
+print("DEBUG BASE_DIR:", BASE_DIR)
+print("DEBUG HEART MODEL PATH:", HEART_MODEL_PATH)
+print("DEBUG CURRENT DIRECTORY:", os.getcwd())
+print("DEBUG FILES IN BASE_DIR:")
 
+try:
+    print(os.listdir(BASE_DIR))
+except Exception as e:
+    print("Directory error:", e)
 
 # ============================================================
 # LOAD HEART MODEL
