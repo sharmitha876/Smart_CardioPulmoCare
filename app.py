@@ -6,8 +6,7 @@ import numpy as np
 import librosa
 
 # Allow backend/app.py to import model definitions from the models folder.
-BASE_DIR = os.path.dirname(
-    os.path.abspath(__file__)
+BASE_DIR = "/app"
 )
 MODELS_DIR = os.path.join(
     BASE_DIR,
