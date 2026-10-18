@@ -944,21 +944,21 @@ print(
 # FLASK
 # ============================================================
 
-
 app = Flask(__name__)
 
 CORS(
     app,
     resources={
         r"/*": {
-            "origins": ["https://smart-cardio-care.vercel.app"]
+            "origins": [
+                "https://smart-cardio-care.vercel.app"
+            ]
         }
-    }
+    },
+    methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
+    supports_credentials=False
 )
-app.config[
-    "UPLOAD_FOLDER"
-] = UPLOAD_FOLDER
-
 
 # ============================================================
 # FILE VALIDATION
