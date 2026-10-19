@@ -25,6 +25,7 @@ from train_as_model import ASASTConformer
 from train_mr_model import MRASTConformer
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from werkzeug.utils import secure_filename
 torch.set_num_threads(1)
 torch.set_num_interop_threads(1)
 
