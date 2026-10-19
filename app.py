@@ -21,7 +21,7 @@ if MODELS_DIR not in sys.path:
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from models import ASASTConformer
+from train_as_model import ASASTConformer
 torch.set_num_threads(1)
 torch.set_num_interop_threads(1)
 
