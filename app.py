@@ -1935,52 +1935,14 @@ def predict():
 # RUN SERVER
 # ============================================================
 
+# ============================================================
+# RUN SERVER
+# ============================================================
 if __name__ == "__main__":
-
-    print()
-    print("=" * 70)
-    print("CARDIOPULMOCARE SERVER")
-    print("=" * 70)
-
-    print()
-    print(
-        "Heart model:"
-    )
-
-    print(
-        "4-Valve AST + Conformer"
-    )
-
-    print(
-        "Valves: AV, MV, PV, TV"
-    )
-
-    print()
-    print(
-        f"Heart threshold: {HEART_THRESHOLD:.4f}"
-    )
-
-    print(
-        f"AS threshold: {AS_THRESHOLD:.4f}"
-    )
-
-    print(
-        f"MR threshold: {MR_THRESHOLD:.4f}"
-    )
-
-    print()
-    print(
-        "URL:"
-    )
-
-    print(
-        "http://127.0.0.1:5000"
-    )
-
-    print("=" * 70)
+    port = int(os.environ.get("PORT", 5000))
 
     app.run(
         host="0.0.0.0",
-        port=5000,
+        port=port,
         debug=False
     )
