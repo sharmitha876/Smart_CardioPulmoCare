@@ -22,6 +22,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from train_as_model import ASASTConformer
+from train_mr_model import MRASTConformer
 torch.set_num_threads(1)
 torch.set_num_interop_threads(1)
 
