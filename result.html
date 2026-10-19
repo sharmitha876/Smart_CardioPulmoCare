@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prediction Result | CardioPulmoCare</title><link rel="stylesheet" href="style.css">
+<style>
+.result-hero{text-align:center;padding:36px 0 22px}.result-hero .hero-badge{margin-bottom:14px}.result-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:22px;align-items:stretch}.result-status{display:flex;align-items:center;gap:15px;margin:10px 0 20px}.result-heart{width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 0 20px #ff1747);animation:heartbeat 2s infinite}.result-kicker{color:#ff627b;font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase}.big-result{font-size:clamp(26px,3vw,40px);line-height:1.12;font-weight:950;color:#ff5a75;margin-top:8px;overflow-wrap:anywhere}.result-description{color:var(--muted);font-size:14px;line-height:1.7;margin-top:14px}.audio-list{display:grid;gap:13px;margin-top:15px}.audio-row{padding:15px;border:1px solid #ff2d4b38;border-radius:13px;background:#090103a8}.audio-row strong{display:block;font-size:13px;overflow-wrap:anywhere;margin-bottom:10px}.audio-row audio{width:100%;height:38px;accent-color:#ff3152}.wave{display:flex;align-items:center;justify-content:center;gap:4px;height:80px;padding:10px;margin-top:14px;border:1px solid #ff2d4b38;border-radius:13px;background:radial-gradient(ellipse at center,#ff173d1c,transparent 70%),#090103}.wave i{display:block;width:4px;border-radius:6px;background:linear-gradient(#ff8a9c,#f20b3d);box-shadow:0 0 8px #ff244a66}.details-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}.detail{padding:15px;border:1px solid #ff2d4b38;border-radius:12px;background:#0801038c}.detail span{display:block;color:var(--muted2);font-size:11px;margin-bottom:7px}.detail strong{display:block;font-size:13px;overflow-wrap:anywhere}.result-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.result-actions a{display:inline-flex;justify-content:center;align-items:center;text-decoration:none;padding:13px 18px;border-radius:10px;font-weight:800;font-size:12px}.primary-action{color:#fff;background:linear-gradient(110deg,#c9002c,#ff3152)}.secondary-action{border:1px solid #ff37538f;color:#fff;background:#ff173d10}.empty-result{text-align:center;padding:35px 20px}.error-text{color:#ff9eae;line-height:1.6}@media(max-width:760px){.result-layout{grid-template-columns:1fr}.result-hero{padding-top:25px}.result-status{align-items:flex-start}.result-heart{width:58px;height:58px}}
+</style></head>
+<body>
+<header class="header" id="home">
+<a class="logo" href="index.html" aria-label="CardioPulmoCare home"><span class="logo-mark" aria-hidden="true">♡</span><span class="logo-copy"><strong>Cardio<span>Pulmo</span>Care</strong><small>AI for a Healthier Heart</small></span></a>
+<nav class="main-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="index.html#about">About</a><a class="active" href="index.html#prediction">Prediction</a><a href="index.html#contact">Contact</a></nav>
+<div class="header-actions"><div class="status"><span class="status-dot" style="background:#36d98b"></span><span>Analysis complete</span></div><a class="get-started" href="index.html#prediction">All Modules <span aria-hidden="true">→</span></a></div>
+</header>
+<main class="container">
+<section class="result-hero"><div class="hero-badge"><span class="pulse-mini">♡</span> AI-POWERED ANALYSIS</div><h1>Prediction <span>Result</span></h1><p>Your heart sound analysis result is displayed below.</p></section>
+<div id="missingResult" class="card empty-result hidden"><h2>No prediction result found</h2><p class="result-description">Please upload a WAV file and run the analysis first.</p><div class="result-actions" style="justify-content:center"><a class="primary-action" href="index.html#prediction">Go to Prediction →</a></div></div>
+<div id="resultContent" class="result-layout hidden">
+<section class="card"><div class="result-status"><img class="result-heart" src="heart.png" alt="Glowing anatomical heart"><div><div class="result-kicker">Predicted class</div><div id="predictionTitle" class="big-result">Analysis complete</div></div></div><p id="predictionMessage" class="result-description"></p><div class="wave" id="waveform" aria-label="Decorative audio waveform"></div><div class="details-grid"><div class="detail"><span>MODEL USED</span><strong id="modelName">AST + Conformer</strong></div><div class="detail"><span>FILES ANALYSED</span><strong id="fileCount">1 WAV file</strong></div><div class="detail"><span>RESULT TIME</span><strong id="resultTime">Just now</strong></div><div class="detail"><span>STATUS</span><strong style="color:#5ce5a4">Completed</strong></div></div><div class="result-actions"><a class="primary-action" href="index.html#prediction">Analyze Another →</a><a class="secondary-action" href="index.html">Back to Home</a></div></section>
+<section class="card"><div class="section-title"><div class="icon">♫</div><div><h2>Uploaded Audio</h2><p>Listen to the recording used for this prediction.</p></div></div><div id="audioFiles" class="audio-list"></div><p class="upload-help">Audio previews are available when the file could be stored by this browser.</p></section>
+</div>
+<div class="disclaimer"><span>Important note</span><p>This academic project provides preliminary audio classification only. It cannot replace assessment by a qualified healthcare professional.</p></div>
+</main><footer id="contact"><div class="footer-brand">CardioPulmoCare</div><p>AI-Based Cardiac Sound Analysis</p><span>Mel-Spectrogram + AST + Conformer</span></footer>
+<script>
+(function(){
+ const raw=sessionStorage.getItem('cardioPredictionResult');
+ const missing=document.getElementById('missingResult'); const content=document.getElementById('resultContent');
+ if(!raw){missing.classList.remove('hidden');return;}
+ let r;try{r=JSON.parse(raw)}catch(e){missing.classList.remove('hidden');return;}
+ const d=r.data||{}; const model=r.model||'Cardiac Audio Analysis';
+ const prediction=d.result||d.message||d.prediction||d.label||'Analysis complete';
+ document.getElementById('predictionTitle').textContent=String(prediction);
+ document.getElementById('predictionMessage').textContent=String(d.message||d.result||'The model returned a prediction successfully. Please interpret this result as an academic screening output, not a medical diagnosis.');
+ document.getElementById('modelName').textContent=String(d.model||model);
+ document.getElementById('fileCount').textContent=(r.files||[]).length+' WAV file'+((r.files||[]).length===1?'':'s');
+ document.getElementById('resultTime').textContent=r.createdAt||'Just now';
+ const audioFiles=document.getElementById('audioFiles');
+ (r.files||[]).forEach((f,i)=>{const row=document.createElement('div');row.className='audio-row';const name=document.createElement('strong');name.textContent=f.name||('Audio '+(i+1));row.appendChild(name);if(f.data){const audio=document.createElement('audio');audio.controls=true;audio.preload='metadata';audio.src=f.data;row.appendChild(audio)}else{const note=document.createElement('p');note.className='upload-help';note.textContent='Audio preview unavailable; file name retained.';row.appendChild(note)}audioFiles.appendChild(row)});
+ const wave=document.getElementById('waveform');const heights=[12,22,36,18,45,28,55,32,19,44,62,27,38,50,20,34,58,25,42,18,31,48,24,60,37,21,46,30,55,17,35,49,26,41,20,57,33,16,44,29,52,23,38,60,27,43,19,34,48,25,56,31,17,40,53,22,36,46,28,58];heights.forEach(h=>{const bar=document.createElement('i');bar.style.height=h+'px';wave.appendChild(bar)});
+ content.classList.remove('hidden');
+})();
+</script></body></html>
