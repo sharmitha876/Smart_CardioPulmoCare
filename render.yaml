@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: smart-cardiopulmocare
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn --chdir backend --workers 1 --threads 1 --timeout 180 app:app
+    healthCheckPath: /health
